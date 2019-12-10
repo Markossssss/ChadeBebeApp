@@ -67,6 +67,17 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+fonts:
+ - family: Amarillo
+   fonts:
+     - asset: fonts/Amarillo.ttf
+       style: normal
+ - family: Pacifico
+   fonts:
+     - asset: fonts/Pacifico-Regular.ttf
+       style: normal
+       weight: 40
+  #
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
