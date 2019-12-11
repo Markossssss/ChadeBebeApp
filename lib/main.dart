@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                 style: (TextStyle(
                 color: Colors.white,
                 fontFamily: 'Pacifico',
-                fontSize: 28.0
+                fontSize: 22.0
                 )
               ),
             ),
@@ -48,22 +48,29 @@ class HomePage extends StatelessWidget {
             width: 500.0,
           ),
           Column(
-
             children: <Widget>[
               Padding(padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                 child: Container(
-                  alignment: Alignment.center,
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.9),
+                    borderRadius: BorderRadiusDirectional.only(
+                        bottomStart: Radius.circular(10.0),
+                        bottomEnd: Radius.circular(10.0)
+                    )
+                  ),
+                  alignment: Alignment.topCenter,
                   width: 500,
-                  height: 590,
+                  height: 540,
                   child: Container(
-                    color: Colors.black, //????????????????????????
-                    width: 20,
-                    height: 20,
-                    child: Text('Olá mundo!',
+                    alignment: Alignment.center,
+                    color: Colors.black,
+                    width: 500,
+                    height: 205,
+                    child: Text('Fala rapaze da quebrada!',
                       textAlign: TextAlign.center,
                       style: (TextStyle(
-                        color: Colors.black,
+                        fontFamily: 'Pacifico',
+                        color: Colors.white,
                       )),
                     ),
                   ),
