@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 void main(){
   runApp(MaterialApp(
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
                 style: (TextStyle(
                 color: Colors.white,
                 fontFamily: 'Pacifico',
-                fontSize: 25.0
+                fontSize: 28.0
                 )
               ),
             ),
@@ -42,12 +43,30 @@ class HomePage extends StatelessWidget {
           Image.asset(
             "images/bg/bgApp.png",
             fit: BoxFit.cover,
+            alignment: Alignment.center,
             height: 900.0,
+            width: 500.0,
           ),
           Column(
+
             children: <Widget>[
-              Container(
-                child: Text('Olá mundo!',
+              Padding(padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.white,
+                  width: 500,
+                  height: 590,
+                  child: Container(
+                    color: Colors.black, //????????????????????????
+                    width: 20,
+                    height: 20,
+                    child: Text('Olá mundo!',
+                      textAlign: TextAlign.center,
+                      style: (TextStyle(
+                        color: Colors.black,
+                      )),
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -44,6 +44,8 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+  assets:
+     - images/bg/bgApp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -67,16 +69,16 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-fonts:
- - family: Amarillo
-   fonts:
-     - asset: fonts/Amarillo.ttf
-       style: normal
- - family: Pacifico
-   fonts:
-     - asset: fonts/Pacifico-Regular.ttf
-       style: normal
-       weight: 40
+  fonts:
+    - family: Amarillo
+      fonts:
+        - asset: fonts/Amarillo.ttf
+          style: normal
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
+          style: normal
+          weight: 400
   #
   #
   # For details regarding fonts from package dependencies,
