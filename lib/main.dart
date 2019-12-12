@@ -18,7 +18,12 @@ class Home extends StatelessWidget {
 
 const ThemeColor = const Color(0xFF58BCFF);
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
