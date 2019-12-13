@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false, //Evita com que o aparecimento do teclado comprima os elementos flutuantes
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -131,14 +132,6 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                         Spacer(),
-//                                        Row(
-//                                          children: <Widget>[
-//                                            Container(
-//                                              height: 10.0,
-//                                              width: 2.0,
-//                                            )
-//                                          ],
-//                                        ),
                                         Row(
                                           children: <Widget>[
                                             Flexible(
@@ -259,7 +252,9 @@ class _HomePageState extends State<HomePage> {
                                               height: 10,
                                             ),
                                             Flexible(
-                                              child: NovoBotao(onPressed: null)
+                                              child: NovoBotao(onPressed: (){
+
+                                              })
                                             ),
                                           ],
                                         ),
@@ -279,7 +274,85 @@ class _HomePageState extends State<HomePage> {
                                   // output de dados
                                   height: 317.0,
                                   width: 1000.0,
-                                  color: Colors.green.withOpacity(0.0))
+                                  color: Colors.green.withOpacity(0.1),
+                                  child: Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                                    child: ListView(
+                                      scrollDirection: Axis.vertical,
+                                      children: <Widget>[
+                                        Column(
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Text('Carrinho de bebê:',
+                                                  style: TextStyle(
+                                                      fontSize: 25.0,
+                                                      color: Colors.black54
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+
+                                              Stack(
+                                                children: <Widget>[
+                                                  Padding(padding: EdgeInsets.symmetric(
+                                                    horizontal: 0
+                                                  ),
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Flexible(
+                                                          child:Text('Nome do convidado:',
+                                                            style: TextStyle(
+                                                                fontSize: 12.0,
+                                                                color: Colors.black54
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Flexible(
+                                                          child: Text('Nome do pai:',
+                                                            style: TextStyle(
+                                                                fontSize: 12.0,
+                                                                color: Colors.black54
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Flexible(
+                                                          child: Text('Nome da mãe:',
+                                                            style: TextStyle(
+                                                                fontSize: 12.0,
+                                                                color: Colors.black54
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    ),
+                                                  ),
+                                                  Padding(padding: null,
+                                                  child: Row(],
+                                              ),
+                                              Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    width: 0.0,
+                                                    height: 15.0,
+                                                    color: Colors.black38,
+                                                  ),
+                                                  Container(
+                                                      width: 300.0,
+                                                      height: 1.0,
+                                                      color: Colors.black38,
+                                                ),
+                                              ],
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                ),
+                              ),
                             ],
                           ),
                           height: 539.0,
@@ -338,6 +411,15 @@ class NovoBotao extends StatelessWidget {
       onPressed: onPressed,
       shape: StadiumBorder(),
       hoverColor: Colors.white,
+
+    );
+  }
+}
+
+class Card extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
 
     );
   }
