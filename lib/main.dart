@@ -24,6 +24,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //Variáveis
+  var nomeBebe      = TextEditingController();
+  var nomeMae       = TextEditingController();
+  var nomePai       = TextEditingController();
+  var nomeConvidado = TextEditingController();
+  var sexo          = TextEditingController();
+  var item          = TextEditingController();
+  var data          = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Container(
                                               child: Text(
-                                                "Bem-vindo a essa BOSTA de aplicativo!",
+                                                "Bem-vindo ao aplicativo!",
                                                 style: TextStyle(
                                                   color: Colors.black87,
                                                 ),
@@ -89,6 +99,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeBebe,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -112,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: sexo,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -136,6 +148,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeMae,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -159,6 +172,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeConvidado,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -183,6 +197,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomePai,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -206,6 +221,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: data,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -229,7 +245,8 @@ class _HomePageState extends State<HomePage> {
                                         Row(
                                           children: <Widget>[
                                             Flexible(
-                                              child: TextFormField(
+                                              child:TextFormField(
+                                                controller: item,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -276,16 +293,7 @@ class _HomePageState extends State<HomePage> {
                                   width: 1000.0,
                                   color: Colors.green.withOpacity(0.0),
                                   child: Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
-                                    child: ListView(
-                                      scrollDirection: Axis.vertical,
-                                      children: <Widget>[
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                     ]
-                                  ),
+                                    child: listaDeCards(),
                                 ),
                               )
                             ],
@@ -308,7 +316,46 @@ class _HomePageState extends State<HomePage> {
         )
     );
   }
+//
+//  var dados = {
+//    'nomeBebe':Text(nomeBebe.text),
+//    'nomeMae':nomeMae,
+//    'nomeConvidado':nomeConvidado,
+//    'sexo':sexo,
+//    'data':data,
+//    'item':item
+//  };
+//
 }
+
+class listaDeCards extends StatefulWidget {
+  @override
+  _listaDeCardsState createState() => _listaDeCardsState();
+}
+
+class _listaDeCardsState extends State<listaDeCards> {
+
+  List<Object> _listViewOutput = [
+  ];
+  _onSubmit(){
+    setState(() {
+      _listViewOutput.add(Card());
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+        scrollDirection: Axis.vertical,
+        children: <Widget>[
+          _listViewOutput.reversed.map(){,
+            return Dismissible(key: key, child: null);
+          }
+        ]
+    );
+  }
+}
+
 
 class NovoBotao extends StatelessWidget {
   NovoBotao({@required this.onPressed});
