@@ -274,85 +274,20 @@ class _HomePageState extends State<HomePage> {
                                   // output de dados
                                   height: 317.0,
                                   width: 1000.0,
-                                  color: Colors.green.withOpacity(0.1),
+                                  color: Colors.green.withOpacity(0.0),
                                   child: Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                                     child: ListView(
                                       scrollDirection: Axis.vertical,
                                       children: <Widget>[
-                                        Column(
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                Text('Carrinho de bebê:',
-                                                  style: TextStyle(
-                                                      fontSize: 25.0,
-                                                      color: Colors.black54
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-
-                                              Stack(
-                                                children: <Widget>[
-                                                  Padding(padding: EdgeInsets.symmetric(
-                                                    horizontal: 0
-                                                  ),
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Flexible(
-                                                          child:Text('Nome do convidado:',
-                                                            style: TextStyle(
-                                                                fontSize: 12.0,
-                                                                color: Colors.black54
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Flexible(
-                                                          child: Text('Nome do pai:',
-                                                            style: TextStyle(
-                                                                fontSize: 12.0,
-                                                                color: Colors.black54
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Flexible(
-                                                          child: Text('Nome da mãe:',
-                                                            style: TextStyle(
-                                                                fontSize: 12.0,
-                                                                color: Colors.black54
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    ),
-                                                  ),
-                                                  Padding(padding: null,
-                                                  child: Row(],
-                                              ),
-                                              Row(
-                                                children: <Widget>[
-                                                  Container(
-                                                    width: 0.0,
-                                                    height: 15.0,
-                                                    color: Colors.black38,
-                                                  ),
-                                                  Container(
-                                                      width: 300.0,
-                                                      height: 1.0,
-                                                      color: Colors.black38,
-                                                ),
-                                              ],
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                        Card(),
+                                        Card(),
+                                        Card(),
+                                        Card(),
+                                        Card(),
+                                     ]
+                                  ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                           height: 539.0,
@@ -419,8 +354,115 @@ class NovoBotao extends StatelessWidget {
 class Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-
+    return new Column(
+      children: <Widget>[
+        Padding(padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 5.0),
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                child: Text('Carrinho de bebê',
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 25.0
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Column(
+          children: <Widget>[
+            Padding(padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+              child: Row(
+                children: <Widget>[
+                  Flexible(
+                    child: Text('Nome do bebê',
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 12.0
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Text('Data',
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 12.0
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Text('Sexo do bebê',
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 12.0
+                      ),
+                    ),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ),
+            ),
+            Container(
+              height: 1.0,
+            ),
+            Column(
+              children: <Widget>[
+                Padding(padding: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
+                  child: Row(
+                      children: <Widget>[
+                        Flexible(
+                          child: Text('Convidado',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 12.0
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Text('Nome do pai',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 12.0
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Text('Nome da mãe',
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 12.0
+                            ),
+                          ),
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+        Row(
+            children: <Widget>[
+              Container(
+                width: 0.0,
+                height: 20.0,
+                color: Colors.black26,
+              ),
+              Container(
+                width: 200.0,
+                height: 1.0,
+                color: Colors.black26,
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center
+        ),
+      ],
     );
   }
 }
