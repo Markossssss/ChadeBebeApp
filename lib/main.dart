@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
@@ -24,6 +27,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //Variáveis
+  var nomeBebe      = TextEditingController();
+  var nomeMae       = TextEditingController();
+  var nomePai       = TextEditingController();
+  var nomeConvidado = TextEditingController();
+  var sexo          = TextEditingController();
+  var item          = TextEditingController();
+  var data          = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                  //Inputs de dados
+                                //Inputs de dados
                                   child: Padding(padding: EdgeInsets.fromLTRB(7.0, 0.0, 7.0, 0.0),
                                     child: Column(
                                       children: <Widget>[
@@ -72,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Container(
                                               child: Text(
-                                                "Bem-vindo a essa BOSTA de aplicativo!",
+                                                "Bem-vindo ao aplicativo!",
                                                 style: TextStyle(
                                                   color: Colors.black87,
                                                 ),
@@ -89,6 +102,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeBebe,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -112,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: sexo,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -136,6 +151,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeMae,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -159,6 +175,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomeConvidado,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -183,6 +200,7 @@ class _HomePageState extends State<HomePage> {
                                           children: <Widget>[
                                             Flexible(
                                               child: TextFormField(
+                                                controller: nomePai,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -206,6 +224,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Flexible(
                                               child: TextFormField(
+                                                controller: data,
                                                 decoration: const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -229,7 +248,8 @@ class _HomePageState extends State<HomePage> {
                                         Row(
                                           children: <Widget>[
                                             Flexible(
-                                              child: TextFormField(
+                                              child:TextFormField(
+                                                controller: item,
                                                 decoration:  const InputDecoration(
                                                   contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                                   border: OutlineInputBorder(
@@ -252,9 +272,10 @@ class _HomePageState extends State<HomePage> {
                                               height: 10,
                                             ),
                                             Flexible(
-                                              child: NovoBotao(onPressed: (){
-
-                                              })
+                                                child: NovoBotao(onPressed: (){
+                                                  _saveData(DataCha(nomeBebe.text, item.text, nomeMae.text, data.text, nomeConvidado.text, nomePai.text, sexo.text));
+                                                  _loadData();
+                                                })
                                             ),
                                           ],
                                         ),
@@ -271,20 +292,15 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black38,
                               ),
                               Container(
-                                  // output de dados
-                                  height: 317.0,
-                                  width: 1000.0,
-                                  color: Colors.green.withOpacity(0.0),
-                                  child: Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
-                                    child: ListView(
-                                      scrollDirection: Axis.vertical,
-                                      children: <Widget>[
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                        Card(),
-                                     ]
+                                // output de dados
+                                height: 317.0,
+                                width: 1000.0,
+                                color: Colors.green.withOpacity(0.0),
+                                child: Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                                  child: ListView(
+                                    children: <Widget>[
+                                      Card(),
+                                    ],
                                   ),
                                 ),
                               )
@@ -308,13 +324,26 @@ class _HomePageState extends State<HomePage> {
         )
     );
   }
+//
+//  var dados = {
+//    'nomeBebe':Text(nomeBebe.text),
+//    'nomeMae':nomeMae,
+//    'nomeConvidado':nomeConvidado,
+//    'sexo':sexo,
+//    'data':data,
+//    'item':item
+//  };
+//
 }
+
+
+
 
 class NovoBotao extends StatelessWidget {
   NovoBotao({@required this.onPressed});
-  
+
   final GestureTapCallback onPressed;
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -322,31 +351,30 @@ class NovoBotao extends StatelessWidget {
       fillColor: ThemeColor,
       splashColor: Colors.white,
       child: Padding(padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-        child: Container(
-          child: Row(
-            children: <Widget>[
-              Icon(
-                Icons.add_circle_outline,
-                color: Colors.white,
-              ),
-              Spacer(),
-              Text('ADICIONAR',
-                style: TextStyle(
-                    color: Colors.white
+          child: Container(
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.add_circle_outline,
+                  color: Colors.white,
                 ),
-              ),
-              Spacer(),
-            ],
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-        )
+                Spacer(),
+                Text('ADICIONAR',
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                ),
+                Spacer(),
+              ],
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+          )
       ),
       onPressed: onPressed,
       shape: StadiumBorder(),
       hoverColor: Colors.white,
-
     );
   }
 }
@@ -464,5 +492,46 @@ class Card extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+const jsonCode =const JsonCodec();
+
+void _loadData() async {
+
+  var url = "https://chadebebe-60fe7.firebaseio.com/test/cha.json";
+
+  http.Response response = await http.get(url);
+
+  Map dataCha_ = jsonCode.decode(response.body);
+  var list =dataCha_.values.toList();
+  print(list[list.length-1]);
+}
+
+
+_saveData(DataCha data) async{
+  var json = jsonCode.encode(data);
+
+
+  var url = "https://chadebebe-60fe7.firebaseio.com/test/cha.json";
+
+  http.Response response = await http.post(url, body: json);
+
+}
+
+class DataCha{
+  String nome;
+  String item;
+  String nomeMae;
+  String nomePai;
+  String sexo;
+  String nomeConvidado;
+  String dia;
+  static int id=0;
+  DataCha(this.nome,this.item,this.nomeMae, this.dia,this.nomeConvidado,this.nomePai,this.sexo){
+    id +=1;
+  }
+  Map toJson(){
+    return {"nome":nome,"item":item,"nomeMae":nomeMae,"nomeConvidado":nomeConvidado,"nomePai":nomePai,"sexo":sexo,"dia":dia};
   }
 }
