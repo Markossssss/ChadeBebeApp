@@ -374,14 +374,15 @@ class _HomePageState extends State<HomePage> {
                                             return ListView.builder(
                                               itemCount: snapshot.data.length,
                                               itemBuilder: (BuildContext context, int index){
+                                                var pos = snapshot.data.length-index-1;
                                                 return Card(
-                                                  sexo: snapshot.data[index]['sexo'],
-                                                  nomePai: snapshot.data[index]['nomePai'],
-                                                  data: snapshot.data[index]['dia'],
-                                                  item: snapshot.data[index]['item'],
-                                                  nomeBebe: snapshot.data[index]['nome'],
-                                                  nomeConvidado: snapshot.data[index]['nomeConvidado'],
-                                                  nomeMae: snapshot.data[index]['nomeMae'],
+                                                  sexo: snapshot.data[pos]['sexo'],
+                                                  nomePai: snapshot.data[pos]['nomePai'],
+                                                  data: snapshot.data[pos]['dia'],
+                                                  item: snapshot.data[pos]['item'],
+                                                  nomeBebe: snapshot.data[pos]['nome'],
+                                                  nomeConvidado: snapshot.data[pos]['nomeConvidado'],
+                                                  nomeMae: snapshot.data[pos]['nomeMae'],
                                                 );
                                               },
                                             );
